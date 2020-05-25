@@ -1,5 +1,4 @@
 # IAED1920-P2
-# Enunciado do Projecto 2 - IAED 2019/20
 
 ## 1. Introdução
 
