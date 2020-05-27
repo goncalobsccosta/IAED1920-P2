@@ -18,7 +18,8 @@ seguinte e indicam as operações a executar.
 | __P__ | Procura uma equipa. |
 | __r__ | Apaga um jogo. |
 | __s__ | Altera a pontuação (_score_) de um jogo. |
-| __g__ | Encontra as equipas que venceram mais jogos.
+| __g__ | Encontra as equipas que venceram mais jogos. |
+| __Z__ | Apaga uma equipa dado um nome. |
 | __x__ | Termina o programa. |
 
 ## 2. Especificação do problema
@@ -54,7 +55,7 @@ Para simplificar o debug do projecto, no inicio de cada linha do output deverá 
 A sigla `NL` vai ser usada no texto seguinte para designar este número.
 
 * __a__ - Adiciona um novo jogo.
-  * Formato de entrada: `a nome:equipa1:equipa2:score1:score2`
+  * Formato de entrada: `a nome:equipa1:equipa2:score1:score2:info`
   * Formato de saída: NADA (excepto erro).
   * Erros:
     * `NL Jogo existente.` no caso de já existir um jogo com esse nome no sistema.
@@ -63,7 +64,7 @@ A sigla `NL` vai ser usada no texto seguinte para designar este número.
   * Formato de entrada: `l`
   * Formato de saída: Uma linha por jogo no formato abaixo
 
-        NL nome-jogo nome-equipa1 nome-equipa2 score1 score2
+        NL nome-jogo nome-equipa1 nome-equipa2 score1 score2 info-adicional
 
     Os jogos deverão ser listados pela ordem em que foram introduzidos.
     Caso não exista nenhum jogo no sistema, o comando não imprime nada.
@@ -104,3 +105,9 @@ A sigla `NL` vai ser usada no texto seguinte para designar este número.
         ...
     Caso não exista nenhuma equipa, o comando não imprime nada (nem a palavra `Melhores`).
   * Erros: Não aplicável.
+* __Z__ - Apaga uma equipa dado um nome.
+  * Formato de entrada: `Z equipa`
+  * Formato de saída: NADA (excepto erro).
+  * Erros:
+    * `NL Equipa inexistente.` no caso de não existir nenhuma equipa com esse nome no sistema.
+    * `NL Equipa com jogos.` no caso de a equipa ter 1 ou mais jogos registados no sistema.
