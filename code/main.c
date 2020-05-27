@@ -22,6 +22,7 @@ int main(void){
 		case 'r': rd_ws(); cmd_r(&head, &last, &g, &t, ++nl);	break;
 		case 's': rd_ws(); cmd_s(&g, &t, ++nl); 				break;
 		case 'g': 		   cmd_g(t, ++nl); 						break;
+		case 'Z': rd_ws(); cmd_Z(&t, g, ++nl); 					break;
 		case 'x': 		   cmd_x(g, t);							break;
 		}
 	} while(cmd != 'x');

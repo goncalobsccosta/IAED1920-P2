@@ -13,7 +13,7 @@
 
 /* Structure representing a game */
 struct jogo{
-	char *nome, *equipa1, *equipa2;
+	char *nome, *equipa1, *equipa2, *extra;
 	unsigned int score1, score2;
 };
 

@@ -107,6 +107,7 @@ void freeTree(Tree *node){
         free(node->x->game.nome);
 		free(node->x->game.equipa1);
 		free(node->x->game.equipa2);
+		free(node->x->game.extra);
         free(node->x);
 
         freeTree(node->l);
@@ -317,6 +318,41 @@ Tree2 *AVLbalance2(Tree2 *h){
 	return h;
 } 
 
+/* Goes to the max of a tree. */
+Tree2 *max2(Tree2 *h) {
+	if (h==NULL || h->r==NULL) return h;
+	else return max2(h->r);
+}
+
+/* Removes a node from a tree and frees the memory. */
+Tree2 *deleteR2(Tree2 *h, char *nome, int nl) {
+	Tree2 *aux;
+	char *x;
+	if (h == NULL) {
+		return h;
+	}
+	else if (strcmp(nome,h->x) < 0) h->l=deleteR2(h->l,nome, nl);
+	else if (strcmp(h->x, nome) < 0) h->r=deleteR2(h->r,nome, nl) ;
+	else{
+		if (h->l != NULL && h->r != NULL ) { /* caso 3 */
+		aux=max2(h->l);
+		x = h->x;
+		h->x = aux->x;
+		aux->x = x;
+		h->l=deleteR2(h->l, aux->x, nl);
+		} else {
+			aux=h;
+			if ( h->l == NULL && h->r == NULL ) h=NULL; /* caso 1 */
+			else if (h->l == NULL) h=h->r; /* caso 2a */
+			else h=h->l; /* caso 2b */
+			free(aux->x);
+			free(aux);
+		}
+	}
+	h = AVLbalance2(h);
+	return h;
+}
+
 /* Frees the entire tree. */
 void freeTree2(Tree2 *node){
        if (node != NULL) {
@@ -333,6 +369,14 @@ void traverse(Tree2 *h, int *win){
 	traverse(h->l, win);
 	if (h -> win > *win) *win = h -> win;
 	traverse(h->r, win);
+}
+
+void traverse2(Tree *h, char *name, int *boolean){
+	if (h == NULL)return;
+	traverse2(h->l, name, boolean);
+	if (strcmp(h -> x -> game.equipa1, name) == 0) {*boolean = 1;return;}
+	if (strcmp(h -> x -> game.equipa2, name) == 0) {*boolean = 1;return;}
+	traverse2(h->r, name, boolean);
 }
 
 /* Prints the teams with a certain amount of wins */

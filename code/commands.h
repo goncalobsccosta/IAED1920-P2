@@ -27,6 +27,7 @@ void cmd_P(Tree2 **t, int nl);											/* Seaches for a team. */
 void cmd_r(link *head, link *last, Tree **g,Tree2 **equipas, int nl);	/* Removes a game. */
 void cmd_s(Tree **g, Tree2 **equipas, int nl);							/* Alters the score of a game. */
 void cmd_g(Tree2 *t, int nl);											/* Finds teams with the most wins. */
+void cmd_Z(Tree2 **t, Tree *g, int nl);									/* Removes a team. */
 void cmd_x(Tree *g, Tree2 *equipas);									/* Terminates the program. */
 
 #endif

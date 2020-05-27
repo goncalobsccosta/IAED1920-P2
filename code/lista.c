@@ -38,6 +38,7 @@ void freeNode(link x){
 	free(x->game.nome);
 	free(x->game.equipa1);
 	free(x->game.equipa2);
+	free(x->game.extra);
 	free(x);
 }
 
@@ -77,5 +78,5 @@ void print(link node, int nl){
 
 /* Function to print a single node in a given doubly linked list. */
 void printSingle(link node, int nl){
-	printf("%d %s %s %s %d %d\n", nl,node->game.nome, node->game.equipa1, node->game.equipa2, node->game.score1, node->game.score2);
+	printf("%d %s %s %s %d %d %s\n", nl,node->game.nome, node->game.equipa1, node->game.equipa2, node->game.score1, node->game.score2, node->game.extra);
 }

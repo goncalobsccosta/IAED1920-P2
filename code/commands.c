@@ -14,7 +14,7 @@ void cmd_a(link *head, link *last, Tree **g, Tree2 **t, int nl){
 	Tree2 *f = NULL,*h = NULL;
 	char line[4][LINEMAX];
 
-	scanf("%[^:\n]:%[^:\n]:%[^:\n]:%u:%u", line[0], line[1], line[2], &game.score1, &game.score2);
+	scanf("%[^:\n]:%[^:\n]:%[^:\n]:%u:%u:%[^:\n]", line[0], line[1], line[2], &game.score1, &game.score2, line[3]);
 
 	/* If there is already a game returns. */
 	if (searchTree(*g, line[0]) != NULL){
@@ -37,6 +37,9 @@ void cmd_a(link *head, link *last, Tree **g, Tree2 **t, int nl){
 
 	game.equipa2 = malloc(sizeof(char)*(strlen(line[2])+1));
 	strcpy(game.equipa2, line[2]);
+
+	game.extra = malloc(sizeof(char)*(strlen(line[3])+1));
+	strcpy(game.extra, line[3]);
 
 	if (game.score1 > game.score2) h->win += 1;
 	if (game.score1 < game.score2) f->win += 1;
@@ -170,6 +173,22 @@ void cmd_g(Tree2 *g, int nl){
 		printf("%d Melhores %d\n", nl, win);
 		printMostWins(g, win, nl);
 	}
+}
+
+void cmd_Z(Tree2 **t, Tree *g, int nl){
+	Tree2 *f = NULL;
+	char line[LINEMAX];
+	int boolean = 0;
+
+	scanf("%[^:\n]", line);
+
+	f = searchTree2(*t, line);
+	if (f == NULL) {printf("%d Equipa inexistente.\n", nl); return;}
+	
+	traverse2(g, line, &boolean);
+	if (boolean) {printf("%d Equipa com jogos.\n", nl); return;}
+
+	*t = deleteR2(*t, line, nl);
 }
 
 /* Command x frees all the dynamicaly allocated memory. */

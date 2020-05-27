@@ -55,8 +55,11 @@ Tree2 *rotLR2(Tree2 *h);											/* Double rotation Left Right. */
 Tree2 *rotRL2(Tree2 *h);											/* Double rotation Right Left. */
 int balance2(Tree2 *h);												/* Balance factor. */
 Tree2 *AVLbalance2(Tree2 *h);										/* AVL Balancing function based on slides. */
+Tree2 *max2(Tree2 *h);												/* Goes to the max of a tree. */
+Tree2 *deleteR2(Tree2 *h, char *nome, int nl);						/* Removes a node from a tree and frees the memory. */
 void freeTree2(Tree2 *t);											/* Frees the entire tree. */
 void traverse(Tree2 *h, int *win);									/* Travels through every node of a tree. */
+void traverse2(Tree *h, char *name, int *boolean);					/* Travels through every node of a tree. */
 void printMostWins(Tree2 *t, int win, int nl);						/* Prints the teams with a certain amount of wins */
 
 #endif
